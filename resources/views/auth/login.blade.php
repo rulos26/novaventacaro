@@ -68,11 +68,23 @@
             color: red;
             margin-bottom: 20px;
         }
+        .links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Iniciar Sesión</h1>
+
         <!-- Si hay algún error, mostrémoslo aquí -->
         @if ($errors->any())
             <div class="error-message">
@@ -94,6 +106,11 @@
 
             <button type="submit">Iniciar Sesión</button>
         </form>
+
+        <div class="links">
+            <p><a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a></p>
+            <p><a href="{{ route('register') }}">¿No tienes una cuenta? Regístrate</a></p>
+        </div>
     </div>
 </body>
 </html>
