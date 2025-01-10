@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\RegisterViewResponse;
+use Laravel\Fortify\Http\Responses\SimpleViewResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -20,7 +22,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(RegisterViewResponse::class, function () {
+            return new SimpleViewResponse('auth.register');
+        });
     }
 
     /**
@@ -55,6 +59,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.verify-email'); // Vista para verificar correo electrónico
         });
 
+        
         // Configuración del RateLimiter para evitar abuso en inicio de sesión
         RateLimiter::for('login', function (Request $request) {
             // Genera una clave única basada en el nombre de usuario (por defecto, el email) y la IP del usuario
