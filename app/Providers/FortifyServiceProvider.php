@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\RegisterViewResponse;
 use Laravel\Fortify\Http\Responses\SimpleViewResponse;
-
+use App\Http\Responses\CustomRegisterViewResponse;
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -22,9 +22,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RegisterViewResponse::class, function () {
-            return new SimpleViewResponse('auth.register');
-        });
+        $this->app->singleton(RegisterViewResponse::class, CustomRegisterViewResponse::class);
     }
 
     /**
