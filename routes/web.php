@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
-Route::get('/', function () {
+Route::post('/', function () {
     return view('auth.login');
 })->name('login');
 
