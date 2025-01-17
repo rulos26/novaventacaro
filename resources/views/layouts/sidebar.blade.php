@@ -10,6 +10,7 @@
                         <i class="nav-icon fas fa-home"></i>
                         <p>Inicio</p>
                     </a>
+                    <a href="{{Route('pruebas.index')}}">prueba </a>
                 </li>
             </ul>
         </nav>

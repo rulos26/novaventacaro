@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-
+use App\Http\Controllers\PruebaController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -29,3 +29,4 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name ('temp.index');
+Route::resource('pruebas', PruebaController::class);
