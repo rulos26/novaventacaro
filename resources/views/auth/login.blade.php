@@ -110,6 +110,8 @@
         <div class="links">
             <p><a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a></p>
             <p><a href="{{ route('register') }}">¿No tienes una cuenta? Regístrate</a></p>
+        	<p><a href="{{route ('temp.index')}}">dashboard</a></p>
+        
         </div>
     </div>
 </body>

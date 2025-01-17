@@ -26,3 +26,6 @@ Route::get('password/reset', [ResetPasswordController::class, 'showLinkRequestFo
 Route::post('password/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name ('temp.index');
