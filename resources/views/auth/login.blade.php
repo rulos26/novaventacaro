@@ -79,6 +79,16 @@
         .links a:hover {
             text-decoration: underline;
         }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -98,11 +108,14 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <label for="email">Correossss electrónicoss:</label>
+            <label for="email">Correo electrónico:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
 
             <button type="submit">Iniciar Sesión</button>
         </form>
@@ -110,9 +123,22 @@
         <div class="links">
             <p><a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a></p>
             <p><a href="{{ route('register') }}">¿No tienes una cuenta? Regístrate</a></p>
-        	<p><a href="{{route ('temp.index')}}">dashboard</a></p>
-        
+            <p><a href="{{route ('temp.index')}}">dashboard</a></p>
         </div>
     </div>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var passwordToggle = document.querySelector(".toggle-password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                passwordToggle.textContent = "🙈"; // Cambiar el ícono a un "ojo cerrado"
+            } else {
+                passwordField.type = "password";
+                passwordToggle.textContent = "👁️"; // Cambiar el ícono a un "ojo abierto"
+            }
+        }
+    </script>
 </body>
 </html>
