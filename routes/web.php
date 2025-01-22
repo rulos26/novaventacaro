@@ -11,6 +11,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CicloController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EstadosCicloController;
+use App\Http\Controllers\EstadosDeudaController;
+use App\Http\Controllers\EstadosPedidoController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -50,6 +54,12 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
     Route::get('/cliente/dashboard', [ClienteController::class, 'index'])->name('cliente.dashboard');
     Route::resource('estados-ciclos', EstadosCicloController::class);
     Route::resource('ciclos', CicloController::class);
+    Route::resource('clientes', ClienteController::class);
+    Route::resource('productos', ProductoController::class);
+    Route::resource('estados-pedidos', EstadosPedidoController::class);
+    Route::resource('estados-deudas', EstadosDeudaController::class);
+    Route::resource('pedidos', PedidoController::class);
+
     Route::get('/logout', function () {
         Auth::logout();
         session()->invalidate();

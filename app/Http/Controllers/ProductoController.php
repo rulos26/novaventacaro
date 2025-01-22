@@ -2,49 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use App\Models\Producto;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\ClienteRequest;
+use App\Http\Requests\ProductoRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ClienteController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): View
     {
-        $clientes = Cliente::paginate();
+        $productos = Producto::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.index', compact('clientes','roles'))
-            ->with('i', ($request->input('page', 1) - 1) * $clientes->perPage());
+        return view('producto.index', compact('productos','roles'))
+            ->with('i', ($request->input('page', 1) - 1) * $productos->perPage());
     }
-    
-    
+
     /**
      * Show the form for creating a new resource.
      */
     public function create(): View
     {
-        $cliente = new Cliente();
+        $producto = new Producto();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.create', compact('cliente','roles'));
+        return view('producto.create', compact('producto','roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ClienteRequest $request): RedirectResponse
+    public function store(ProductoRequest $request): RedirectResponse
     {
-        Cliente::create($request->validated());
+        Producto::create($request->validated());
 
-        return Redirect::route('clientes.index')
-            ->with('success', 'Cliente created successfully.');
+        return Redirect::route('productos.index')
+            ->with('success', 'Producto created successfully.');
     }
 
     /**
@@ -52,10 +51,10 @@ class ClienteController extends Controller
      */
     public function show($id): View
     {
-        $cliente = Cliente::find($id);
+        $producto = Producto::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.show', compact('cliente','roles'));
+        return view('producto.show', compact('producto','roles'));
     }
 
     /**
@@ -63,28 +62,28 @@ class ClienteController extends Controller
      */
     public function edit($id): View
     {
-        $cliente = Cliente::find($id);
+        $producto = Producto::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.edit', compact('cliente','roles'));
+        return view('producto.edit', compact('producto','roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ClienteRequest $request, Cliente $cliente): RedirectResponse
+    public function update(ProductoRequest $request, Producto $producto): RedirectResponse
     {
-        $cliente->update($request->validated());
+        $producto->update($request->validated());
 
-        return Redirect::route('clientes.index')
-            ->with('success', 'Cliente updated successfully');
+        return Redirect::route('productos.index')
+            ->with('success', 'Producto updated successfully');
     }
 
     public function destroy($id): RedirectResponse
     {
-        Cliente::find($id)->delete();
+        Producto::find($id)->delete();
 
-        return Redirect::route('clientes.index')
-            ->with('success', 'Cliente deleted successfully');
+        return Redirect::route('productos.index')
+            ->with('success', 'Producto deleted successfully');
     }
 }

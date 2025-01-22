@@ -15,6 +15,7 @@ class ExecuteSqlSeeder extends Seeder
      */
     public function run()
     {
+        $this->executeSqlFile(database_path('sql/data_profesion.sql'));
        /*  $this->executeSqlFile(database_path('sql/municipios.sql'));
         $this->executeSqlFile(database_path('sql/paises.sql'));
         $this->executeSqlFile(database_path('sql/departamentos.sql'));
@@ -25,7 +26,7 @@ class ExecuteSqlSeeder extends Seeder
         $this->executeSqlFile(database_path('sql/data-habeas.sql'));
         $this->executeSqlFile(database_path('sql/token.sql'));
         $this->executeSqlFile(database_path('sql/data_tipo_contrato.sql'));
-        $this->executeSqlFile(database_path('sql/data_profesion.sql'));
+       
         $this->executeSqlFile(database_path('sql/data_tipo_cuenta.sql'));
         $this->executeSqlFile(database_path('sql/data_tipo_jornada.sql'));
         $this->executeSqlFile(database_path('sql/patch_anexo.sql'));
