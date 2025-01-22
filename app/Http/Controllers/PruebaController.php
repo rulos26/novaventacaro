@@ -6,6 +6,7 @@ use App\Models\Prueba;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\PruebaRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -17,8 +18,9 @@ class PruebaController extends Controller
     public function index(Request $request): View
     {
         $pruebas = Prueba::paginate();
-
-        return view('prueba.index', compact('pruebas'))
+        $user = Auth::user(); // Equivalente a auth()->user()
+        $roles = $user->roles->pluck('name');
+        return view('prueba.index', compact('pruebas','roles'))
             ->with('i', ($request->input('page', 1) - 1) * $pruebas->perPage());
     }
 
@@ -28,8 +30,9 @@ class PruebaController extends Controller
     public function create(): View
     {
         $prueba = new Prueba();
-
-        return view('prueba.create', compact('prueba'));
+        $user = Auth::user(); // Equivalente a auth()->user()
+        $roles = $user->roles->pluck('name');
+        return view('prueba.create', compact('prueba','roles'));
     }
 
     /**
@@ -49,8 +52,9 @@ class PruebaController extends Controller
     public function show($id): View
     {
         $prueba = Prueba::find($id);
-
-        return view('prueba.show', compact('prueba'));
+        $user = Auth::user(); // Equivalente a auth()->user()
+        $roles = $user->roles->pluck('name');
+        return view('prueba.show', compact('prueba','roles'));
     }
 
     /**
@@ -59,8 +63,9 @@ class PruebaController extends Controller
     public function edit($id): View
     {
         $prueba = Prueba::find($id);
-
-        return view('prueba.edit', compact('prueba'));
+        $user = Auth::user(); // Equivalente a auth()->user()
+        $roles = $user->roles->pluck('name');
+        return view('prueba.edit', compact('prueba','roles'));
     }
 
     /**

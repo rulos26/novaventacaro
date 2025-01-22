@@ -8,7 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CicloController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EstadosCicloController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -46,8 +48,8 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 
 // Rutas para Cliente
     Route::get('/cliente/dashboard', [ClienteController::class, 'index'])->name('cliente.dashboard');
-    
-
+    Route::resource('estados-ciclos', EstadosCicloController::class);
+    Route::resource('ciclos', CicloController::class);
     Route::get('/logout', function () {
         Auth::logout();
         session()->invalidate();
