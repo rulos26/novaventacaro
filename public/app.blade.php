@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard')</title>
-<!-- Cargar archivo app.css de manera estática -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- AdminLTE CSS desde CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- FontAwesome -->
@@ -14,8 +13,8 @@
     <!-- Bootstrap (opcional, para mayor compatibilidad) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    <!-- Cargar archivo app.css de manera estática -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Cargar el archivo app.css generado por Laravel Mix -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -73,8 +72,45 @@
         document.onclick = resetInactivityTimer;
     </script>
 
-    <!-- Cargar archivo app.js de manera estática -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Script para detectar el tema del sistema y aplicar el tema correspondiente -->
+    <script>
+        // Detecta el tema preferido del sistema
+        function applySystemTheme() {
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            // Verifica si el sistema tiene configurado el tema oscuro
+            if (prefersDark) {
+                document.documentElement.classList.add('dark-theme');
+                // O puedes guardar esta preferencia en localStorage para usarla luego
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Aplica el tema al cargar la página
+        window.addEventListener('load', () => {
+            // Verifica si hay un tema guardado en localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark-theme');
+                } else {
+                    document.documentElement.classList.remove('dark-theme');
+                }
+            } else {
+                // Si no hay un tema guardado, aplica el tema del sistema
+                applySystemTheme();
+            }
+
+            // Escucha los cambios en el tema del sistema (si el usuario cambia la configuración)
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', applySystemTheme);
+        });
+    </script>
+
+    <!-- Cargar el archivo app.js -->
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

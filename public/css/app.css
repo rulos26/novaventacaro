@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 /* Estilos para el tema oscuro */
 .dark-theme {
     --bs-body-bg: #121212;

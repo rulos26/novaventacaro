@@ -1,4 +1,4 @@
-import './bootstrap';
+
 // Detecta el tema preferido del sistema
 function applySystemTheme() {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
