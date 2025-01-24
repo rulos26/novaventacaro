@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EstadosDeudaRequest;
 use App\Models\EstadosDeuda;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\EstadosDeudaRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -20,7 +20,8 @@ class EstadosDeudaController extends Controller
         $estadosDeudas = EstadosDeuda::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-deuda.index', compact('estadosDeudas','roles'))
+
+        return view('estados-deuda.index', compact('estadosDeudas', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $estadosDeudas->perPage());
     }
 
@@ -29,10 +30,11 @@ class EstadosDeudaController extends Controller
      */
     public function create(): View
     {
-        $estadosDeuda = new EstadosDeuda();
+        $estadosDeuda = new EstadosDeuda;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-deuda.create', compact('estadosDeuda','roles'));
+
+        return view('estados-deuda.create', compact('estadosDeuda', 'roles'));
     }
 
     /**
@@ -54,7 +56,8 @@ class EstadosDeudaController extends Controller
         $estadosDeuda = EstadosDeuda::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-deuda.show', compact('estadosDeuda','roles'));
+
+        return view('estados-deuda.show', compact('estadosDeuda', 'roles'));
     }
 
     /**
@@ -65,7 +68,8 @@ class EstadosDeudaController extends Controller
         $estadosDeuda = EstadosDeuda::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-deuda.edit', compact('estadosDeuda','roles'));
+
+        return view('estados-deuda.edit', compact('estadosDeuda', 'roles'));
     }
 
     /**

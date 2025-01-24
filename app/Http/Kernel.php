@@ -24,8 +24,6 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use App\Http\Middleware\SessionTimeout;
-
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 class Kernel extends HttpKernel
@@ -66,8 +64,8 @@ class Kernel extends HttpKernel
         'api' => [
             AddQueuedCookiesToResponse::class,
             StartSession::class,
-            //SetApiLocale::class,
-            //EnsureFrontendRequestsAreStateful::class,
+            // SetApiLocale::class,
+            // EnsureFrontendRequestsAreStateful::class,
             SubstituteBindings::class,
         ],
     ];

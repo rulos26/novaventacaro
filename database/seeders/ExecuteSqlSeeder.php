@@ -16,28 +16,28 @@ class ExecuteSqlSeeder extends Seeder
     public function run()
     {
         $this->executeSqlFile(database_path('sql/data_profesion.sql'));
-       /*  $this->executeSqlFile(database_path('sql/municipios.sql'));
-        $this->executeSqlFile(database_path('sql/paises.sql'));
-        $this->executeSqlFile(database_path('sql/departamentos.sql'));
-        $this->executeSqlFile(database_path('sql/festivos.sql'));
-        $this->executeSqlFile(database_path('sql/tipo_entidad.sql'));
-        $this->executeSqlFile(database_path('sql/tipo_bancos.sql'));
-        $this->executeSqlFile(database_path('sql/data_term.sql'));
-        $this->executeSqlFile(database_path('sql/data-habeas.sql'));
-        $this->executeSqlFile(database_path('sql/token.sql'));
-        $this->executeSqlFile(database_path('sql/data_tipo_contrato.sql'));
-       
-        $this->executeSqlFile(database_path('sql/data_tipo_cuenta.sql'));
-        $this->executeSqlFile(database_path('sql/data_tipo_jornada.sql'));
-        $this->executeSqlFile(database_path('sql/patch_anexo.sql'));
-        $this->executeSqlFile(database_path('sql/patch_contrato.sql'));
-        $this->executeSqlFile(database_path('sql/patch_firma.sql'));
-        $this->executeSqlFile(database_path('sql/messages.sql'));
-        $this->executeSqlFile(database_path('sql/modulos.sql'));
-        $this->executeSqlFile(database_path('sql/tipos_messages.sql'));
-        $this->executeSqlFile(database_path('sql/patch_perfil.sql'));
-        $this->executeSqlFile(database_path('sql/p_q_r_d_s.sql'));
-        $this->executeSqlFile(database_path('sql/genero.sql')); */
+        /*  $this->executeSqlFile(database_path('sql/municipios.sql'));
+         $this->executeSqlFile(database_path('sql/paises.sql'));
+         $this->executeSqlFile(database_path('sql/departamentos.sql'));
+         $this->executeSqlFile(database_path('sql/festivos.sql'));
+         $this->executeSqlFile(database_path('sql/tipo_entidad.sql'));
+         $this->executeSqlFile(database_path('sql/tipo_bancos.sql'));
+         $this->executeSqlFile(database_path('sql/data_term.sql'));
+         $this->executeSqlFile(database_path('sql/data-habeas.sql'));
+         $this->executeSqlFile(database_path('sql/token.sql'));
+         $this->executeSqlFile(database_path('sql/data_tipo_contrato.sql'));
+
+         $this->executeSqlFile(database_path('sql/data_tipo_cuenta.sql'));
+         $this->executeSqlFile(database_path('sql/data_tipo_jornada.sql'));
+         $this->executeSqlFile(database_path('sql/patch_anexo.sql'));
+         $this->executeSqlFile(database_path('sql/patch_contrato.sql'));
+         $this->executeSqlFile(database_path('sql/patch_firma.sql'));
+         $this->executeSqlFile(database_path('sql/messages.sql'));
+         $this->executeSqlFile(database_path('sql/modulos.sql'));
+         $this->executeSqlFile(database_path('sql/tipos_messages.sql'));
+         $this->executeSqlFile(database_path('sql/patch_perfil.sql'));
+         $this->executeSqlFile(database_path('sql/p_q_r_d_s.sql'));
+         $this->executeSqlFile(database_path('sql/genero.sql')); */
     }
 
     /**

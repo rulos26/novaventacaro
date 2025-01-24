@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\AdminDashboard\Token;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TokenSeeder extends Seeder
@@ -20,23 +19,23 @@ class TokenSeeder extends Seeder
         ]); */
 
         Token::Create([
-            'usuario'=>'1',
-            'nombre_del_usuario'=>'juan carlos diaz lara',
-            'rol'=>'1',
-            'nombre_del_rol'=>'SuperAdministrador',
-            'password'=>'',
-            'vencimiento'=>'2023-12-20',
-            'dias'=>'0',
+            'usuario' => '1',
+            'nombre_del_usuario' => 'juan carlos diaz lara',
+            'rol' => '1',
+            'nombre_del_rol' => 'SuperAdministrador',
+            'password' => '',
+            'vencimiento' => '2023-12-20',
+            'dias' => '0',
         ]);
 
         Token::Create([
-            'usuario'=>'2',
-            'nombre_del_usuario'=>'juan manuel diaz lara',
-            'rol'=>'2',
-            'nombre_del_rol'=>'Administrador',
-            'password'=>'',
-            'vencimiento'=>'2023-12-20',
-            'dias'=>'0',
+            'usuario' => '2',
+            'nombre_del_usuario' => 'juan manuel diaz lara',
+            'rol' => '2',
+            'nombre_del_rol' => 'Administrador',
+            'password' => '',
+            'vencimiento' => '2023-12-20',
+            'dias' => '0',
         ]);
     }
 }

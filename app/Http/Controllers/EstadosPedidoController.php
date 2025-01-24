@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EstadosPedidoRequest;
 use App\Models\EstadosPedido;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\EstadosPedidoRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -20,7 +20,8 @@ class EstadosPedidoController extends Controller
         $estadosPedidos = EstadosPedido::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-pedido.index', compact('estadosPedidos','roles'))
+
+        return view('estados-pedido.index', compact('estadosPedidos', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $estadosPedidos->perPage());
     }
 
@@ -29,10 +30,11 @@ class EstadosPedidoController extends Controller
      */
     public function create(): View
     {
-        $estadosPedido = new EstadosPedido();
+        $estadosPedido = new EstadosPedido;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-pedido.create', compact('estadosPedido','roles'));
+
+        return view('estados-pedido.create', compact('estadosPedido', 'roles'));
     }
 
     /**
@@ -43,6 +45,7 @@ class EstadosPedidoController extends Controller
         EstadosPedido::create($request->validated());
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
+
         return Redirect::route('estados-pedidos.index')
             ->with('success', 'EstadosPedido created successfully.');
     }
@@ -55,7 +58,8 @@ class EstadosPedidoController extends Controller
         $estadosPedido = EstadosPedido::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-pedido.show', compact('estadosPedido','roles'));
+
+        return view('estados-pedido.show', compact('estadosPedido', 'roles'));
     }
 
     /**
@@ -66,7 +70,8 @@ class EstadosPedidoController extends Controller
         $estadosPedido = EstadosPedido::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-pedido.edit', compact('estadosPedido','roles'));
+
+        return view('estados-pedido.edit', compact('estadosPedido', 'roles'));
     }
 
     /**

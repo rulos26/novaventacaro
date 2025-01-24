@@ -22,8 +22,8 @@ class PruebaRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'nombre' => 'required|string',
-			'descripcion' => 'string',
+            'nombre' => 'required|string',
+            'descripcion' => 'string',
         ];
     }
 }

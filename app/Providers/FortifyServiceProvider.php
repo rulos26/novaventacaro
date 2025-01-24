@@ -6,15 +6,15 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Http\Responses\CustomRegisterViewResponse;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\RegisterViewResponse;
-use Laravel\Fortify\Http\Responses\SimpleViewResponse;
-use App\Http\Responses\CustomRegisterViewResponse;
+use Laravel\Fortify\Fortify;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -57,11 +57,10 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.verify-email'); // Vista para verificar correo electrónico
         });
 
-        
         // Configuración del RateLimiter para evitar abuso en inicio de sesión
         RateLimiter::for('login', function (Request $request) {
             // Genera una clave única basada en el nombre de usuario (por defecto, el email) y la IP del usuario
-            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())) . '|' . $request->ip());
+            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
             // Permite un máximo de 5 intentos por minuto
             return Limit::perMinute(5)->by($throttleKey);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -20,20 +20,21 @@ class ClienteController extends Controller
         $clientes = Cliente::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.index', compact('clientes','roles'))
+
+        return view('cliente.index', compact('clientes', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $clientes->perPage());
     }
-    
-    
+
     /**
      * Show the form for creating a new resource.
      */
     public function create(): View
     {
-        $cliente = new Cliente();
+        $cliente = new Cliente;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.create', compact('cliente','roles'));
+
+        return view('cliente.create', compact('cliente', 'roles'));
     }
 
     /**
@@ -55,7 +56,8 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.show', compact('cliente','roles'));
+
+        return view('cliente.show', compact('cliente', 'roles'));
     }
 
     /**
@@ -66,7 +68,8 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('cliente.edit', compact('cliente','roles'));
+
+        return view('cliente.edit', compact('cliente', 'roles'));
     }
 
     /**

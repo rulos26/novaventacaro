@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CicloRequest;
 use App\Models\Ciclo;
+use App\Models\EstadosCiclo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\CicloRequest;
-use App\Models\EstadosCiclo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -21,6 +21,7 @@ class CicloController extends Controller
         $ciclos = Ciclo::with('estadoCiclo')->paginate();
         $user = Auth::user();
         $roles = $user->roles->pluck('name');
+
         return view('ciclo.index', compact('ciclos', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $ciclos->perPage());
     }
@@ -30,11 +31,12 @@ class CicloController extends Controller
      */
     public function create(): View
     {
-        $ciclo = new Ciclo();
+        $ciclo = new Ciclo;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        $estados=EstadosCiclo::all();
-        return view('ciclo.create', compact('ciclo','roles','estados'));
+        $estados = EstadosCiclo::all();
+
+        return view('ciclo.create', compact('ciclo', 'roles', 'estados'));
     }
 
     /**
@@ -56,7 +58,8 @@ class CicloController extends Controller
         $ciclo = Ciclo::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('ciclo.show', compact('ciclo','roles'));
+
+        return view('ciclo.show', compact('ciclo', 'roles'));
     }
 
     /**
@@ -67,8 +70,9 @@ class CicloController extends Controller
         $ciclo = Ciclo::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        $estados=EstadosCiclo::all();
-        return view('ciclo.edit', compact('ciclo','roles','estados'));
+        $estados = EstadosCiclo::all();
+
+        return view('ciclo.edit', compact('ciclo', 'roles', 'estados'));
     }
 
     /**

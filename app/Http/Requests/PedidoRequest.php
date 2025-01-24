@@ -22,14 +22,14 @@ class PedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'cliente' => 'required',
-			'producto' => 'required',
-			'ciclo' => 'required',
-			'estado_pedido' => 'required',
-			'estado_deuda' => 'required',
-			'descripcion' => 'string',
-			'valor_catalogo' => 'required',
-			'valor_lista' => 'required',
+            'cliente' => 'required',
+            'producto' => 'required',
+            'ciclo' => 'required',
+            'estado_pedido' => 'required',
+            'estado_deuda' => 'required',
+            'descripcion' => 'string',
+            'valor_catalogo' => 'required',
+            'valor_lista' => 'required',
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -17,6 +18,7 @@ class SessionTimeout
             if ($lastActivity && ($currentTime - $lastActivity > $this->timeout)) {
                 Auth::logout();
                 session()->invalidate();
+
                 return redirect('/')->with('message', 'Sesión cerrada por inactividad.');
             }
 

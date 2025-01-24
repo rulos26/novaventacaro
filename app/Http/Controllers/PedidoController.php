@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PedidoRequest;
 use App\Models\Pedido;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\PedidoRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -19,11 +19,12 @@ class PedidoController extends Controller
     {
         $pedidos = Pedido::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
-        if (!$user) {
+        if (! $user) {
             return redirect('/'); // Redirige a la raíz
         }
         $roles = $user->roles->pluck('name');
-        return view('pedido.index', compact('pedidos','roles'))
+
+        return view('pedido.index', compact('pedidos', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $pedidos->perPage());
     }
 
@@ -32,10 +33,11 @@ class PedidoController extends Controller
      */
     public function create(): View
     {
-        $pedido = new Pedido();
+        $pedido = new Pedido;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('pedido.create', compact('pedido','roles'));
+
+        return view('pedido.create', compact('pedido', 'roles'));
     }
 
     /**
@@ -46,6 +48,7 @@ class PedidoController extends Controller
         Pedido::create($request->validated());
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
+
         return Redirect::route('pedidos.index')
             ->with('success', 'Pedido created successfully.');
     }
@@ -58,7 +61,8 @@ class PedidoController extends Controller
         $pedido = Pedido::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('pedido.show', compact('pedido','roles'));
+
+        return view('pedido.show', compact('pedido', 'roles'));
     }
 
     /**
@@ -69,7 +73,8 @@ class PedidoController extends Controller
         $pedido = Pedido::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('pedido.edit', compact('pedido','roles'));
+
+        return view('pedido.edit', compact('pedido', 'roles'));
     }
 
     /**

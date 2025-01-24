@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(roleSeeder::class);
         $this->call(UserSeeder::class);
-        //$this->call(TokenSeeder::class);
+        // $this->call(TokenSeeder::class);
         $this->call(ExecuteSqlSeeder::class);
-        
+
     }
 }

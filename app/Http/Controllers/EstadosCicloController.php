@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EstadosCicloRequest;
 use App\Models\EstadosCiclo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\EstadosCicloRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -20,7 +20,8 @@ class EstadosCicloController extends Controller
         $estadosCiclos = EstadosCiclo::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-ciclo.index', compact('estadosCiclos','roles'))
+
+        return view('estados-ciclo.index', compact('estadosCiclos', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $estadosCiclos->perPage());
     }
 
@@ -29,11 +30,12 @@ class EstadosCicloController extends Controller
      */
     public function create(): View
     {
-        $estadosCiclo = new EstadosCiclo();
+        $estadosCiclo = new EstadosCiclo;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        $estados=EstadosCiclo::all();
-        return view('estados-ciclo.create', compact('estadosCiclo','roles','estados'));
+        $estados = EstadosCiclo::all();
+
+        return view('estados-ciclo.create', compact('estadosCiclo', 'roles', 'estados'));
     }
 
     /**
@@ -55,7 +57,8 @@ class EstadosCicloController extends Controller
         $estadosCiclo = EstadosCiclo::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-ciclo.show', compact('estadosCiclo','roles'));
+
+        return view('estados-ciclo.show', compact('estadosCiclo', 'roles'));
     }
 
     /**
@@ -66,7 +69,8 @@ class EstadosCicloController extends Controller
         $estadosCiclo = EstadosCiclo::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('estados-ciclo.edit', compact('estadosCiclo','roles'));
+
+        return view('estados-ciclo.edit', compact('estadosCiclo', 'roles'));
     }
 
     /**

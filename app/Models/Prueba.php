@@ -13,12 +13,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Prueba extends Model
 {
-    
     protected $perPage = 20;
 
     /**
@@ -27,6 +25,4 @@ class Prueba extends Model
      * @var array<int, string>
      */
     protected $fillable = ['nombre', 'descripcion'];
-
-
 }

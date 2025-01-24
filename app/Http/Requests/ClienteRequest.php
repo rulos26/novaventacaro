@@ -22,7 +22,7 @@ class ClienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'nombre' => 'required|string',
+            'nombre' => 'required|string',
         ];
     }
 }

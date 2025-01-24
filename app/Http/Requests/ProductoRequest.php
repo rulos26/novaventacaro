@@ -22,8 +22,8 @@ class ProductoRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'referencia' => 'required|string',
-			'descripcion' => 'required|string',
+            'referencia' => 'required|string',
+            'descripcion' => 'required|string',
         ];
     }
 }

@@ -22,10 +22,10 @@ class CicloRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'numero_ciclo' => 'required',
-			'fecha_inicio' => 'required',
-			'fecha_fin' => 'required',
-			'estado' => 'required',
+            'numero_ciclo' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required',
+            'estado' => 'required',
         ];
     }
 }

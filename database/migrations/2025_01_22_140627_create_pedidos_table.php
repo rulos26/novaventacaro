@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('valor_catalogo', 10, 2);
             $table->decimal('valor_lista', 10, 2);
             $table->timestamps();
-        
+
         });
     }
 

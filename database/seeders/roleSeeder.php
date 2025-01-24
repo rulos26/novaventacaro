@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class roleSeeder extends Seeder
 {
@@ -18,9 +17,9 @@ class roleSeeder extends Seeder
         $admin = Role::create(['name' => 'Admin']);
         $cliente = Role::create(['name' => 'Cliente']);
 
-        Permission::create(['name' => 'home'])->syncRoles([$Superadmin, $admin, $cliente]); //pagina principal
+        Permission::create(['name' => 'home'])->syncRoles([$Superadmin, $admin, $cliente]); // pagina principal
 
-        //permisos paises
+        // permisos paises
         /* Permission::create(['name' => 'paises.index'])->syncRoles([$Superadmin, $admin]);
         Permission::create(['name' => 'paises.create'])->syncRoles([$Superadmin]);
         Permission::create(['name' => 'paises.show'])->syncRoles([$Superadmin, $admin]);
@@ -28,36 +27,35 @@ class roleSeeder extends Seeder
         Permission::create(['name' => 'paises.destroy'])->syncRoles([$Superadmin]);
  */
 
-        //permisos departamentos
-       /*  Permission::create(['name' => 'departamentos.index'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'departamentos.create'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'departamentos.show'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'departamentos.edit'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'departamentos.destroy'])->syncRoles([$Superadmin]); */
+        // permisos departamentos
+        /*  Permission::create(['name' => 'departamentos.index'])->syncRoles([$Superadmin, $admin]);
+         Permission::create(['name' => 'departamentos.create'])->syncRoles([$Superadmin]);
+         Permission::create(['name' => 'departamentos.show'])->syncRoles([$Superadmin, $admin]);
+         Permission::create(['name' => 'departamentos.edit'])->syncRoles([$Superadmin, $admin]);
+         Permission::create(['name' => 'departamentos.destroy'])->syncRoles([$Superadmin]); */
 
-
-        //permisos municipios
+        // permisos municipios
         /* Permission::create(['name' => 'municipios.index'])->syncRoles([$Superadmin, $admin]);
         Permission::create(['name' => 'municipios.create'])->syncRoles([$Superadmin]);
         Permission::create(['name' => 'municipios.show'])->syncRoles([$Superadmin, $admin]);
         Permission::create(['name' => 'municipios.edit'])->syncRoles([$Superadmin, $admin]);
         Permission::create(['name' => 'municipios.destroy'])->syncRoles([$Superadmin]); */
 
-        //permisos usuarios
-    /*     Permission::create(['name' => 'users.index'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'users.create'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'users.show'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'users.edit'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'users.destroy'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'users.roles'])->syncRoles([$Superadmin]); */
+        // permisos usuarios
+        /*     Permission::create(['name' => 'users.index'])->syncRoles([$Superadmin, $admin]);
+            Permission::create(['name' => 'users.create'])->syncRoles([$Superadmin]);
+            Permission::create(['name' => 'users.show'])->syncRoles([$Superadmin, $admin]);
+            Permission::create(['name' => 'users.edit'])->syncRoles([$Superadmin, $admin]);
+            Permission::create(['name' => 'users.destroy'])->syncRoles([$Superadmin]);
+            Permission::create(['name' => 'users.roles'])->syncRoles([$Superadmin]); */
 
-        //permisos   protecion de datos personales
-     /*    Permission::create(['name' => 'data-habeas.index'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'data-habeas.create'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'data-habeas.show'])->syncRoles([$Superadmin, $admin]);
-        Permission::create(['name' => 'data-habeas.edit'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'data-habeas.destroy'])->syncRoles([$Superadmin]);
-        Permission::create(['name' => 'data-habeas.roles'])->syncRoles([$Superadmin]); */
+        // permisos   protecion de datos personales
+        /*    Permission::create(['name' => 'data-habeas.index'])->syncRoles([$Superadmin, $admin]);
+           Permission::create(['name' => 'data-habeas.create'])->syncRoles([$Superadmin]);
+           Permission::create(['name' => 'data-habeas.show'])->syncRoles([$Superadmin, $admin]);
+           Permission::create(['name' => 'data-habeas.edit'])->syncRoles([$Superadmin]);
+           Permission::create(['name' => 'data-habeas.destroy'])->syncRoles([$Superadmin]);
+           Permission::create(['name' => 'data-habeas.roles'])->syncRoles([$Superadmin]); */
 
         /* //permisos terminos y condicones
         Permission::create(['name' => 'data-terminos.index'])->syncRoles([$Superadmin, $admin]);

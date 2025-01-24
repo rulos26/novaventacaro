@@ -18,18 +18,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property $valor_lista
  * @property $created_at
  * @property $updated_at
- *
  * @property Ciclo $ciclo
  * @property Cliente $cliente
  * @property EstadosDeuda $estadosDeuda
  * @property EstadosPedido $estadosPedido
  * @property Producto $producto
- * @package App
+ *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Pedido extends Model
 {
-
     protected $perPage = 20;
 
     /**
@@ -39,14 +37,13 @@ class Pedido extends Model
      */
     protected $fillable = ['cliente', 'producto', 'ciclo', 'estado_pedido', 'estado_deuda', 'descripcion', 'valor_catalogo', 'valor_lista'];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-   /*  public function ciclo()
-    {
-        return $this->belongsTo(\App\Models\Ciclo::class, 'ciclo', 'id');
-    } */
+    /*  public function ciclo()
+     {
+         return $this->belongsTo(\App\Models\Ciclo::class, 'ciclo', 'id');
+     } */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

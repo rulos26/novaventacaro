@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SuperadminController extends Controller
 {
     public function index()
     {
-        
+
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-       // dd($roles);
+
+        // dd($roles);
         return view('superadmin.dashboard', compact('roles')); // Cambia a la vista que prefieras
     }
 }

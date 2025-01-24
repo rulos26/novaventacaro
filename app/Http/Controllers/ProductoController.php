@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductoRequest;
 use App\Models\Producto;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductoRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -20,7 +20,8 @@ class ProductoController extends Controller
         $productos = Producto::paginate();
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('producto.index', compact('productos','roles'))
+
+        return view('producto.index', compact('productos', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * $productos->perPage());
     }
 
@@ -29,10 +30,11 @@ class ProductoController extends Controller
      */
     public function create(): View
     {
-        $producto = new Producto();
+        $producto = new Producto;
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('producto.create', compact('producto','roles'));
+
+        return view('producto.create', compact('producto', 'roles'));
     }
 
     /**
@@ -54,7 +56,8 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('producto.show', compact('producto','roles'));
+
+        return view('producto.show', compact('producto', 'roles'));
     }
 
     /**
@@ -65,7 +68,8 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
         $user = Auth::user(); // Equivalente a auth()->user()
         $roles = $user->roles->pluck('name');
-        return view('producto.edit', compact('producto','roles'));
+
+        return view('producto.edit', compact('producto', 'roles'));
     }
 
     /**
