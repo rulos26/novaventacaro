@@ -1,20 +1,23 @@
-
-/* Estilos para el tema oscuro */
-.dark-theme {
-    --bs-body-bg: #121212;
-    --bs-body-color: #ffffff;
-    --bs-primary: #6200ea;
-    --bs-link-color: #bb86fc;
-    background-color: #121212;
-    color: #ffffff;
+/* Tema claro (por defecto) */
+:root {
+    --background-color: #8f13e2;
+    --text-color: #b914fa;
 }
 
-/* Estilos para el tema claro */
-.light-theme {
-    --bs-body-bg: #ffffff;
-    --bs-body-color: #000000;
-    --bs-primary: #007bff;
-    --bs-link-color: #007bff;
-    background-color: #ffffff;
-    color: #000000;
+/* Tema oscuro */
+:root[data-theme="dark"] {
+    --background-color: #080808;
+    --text-color: #0000
+}
+
+.sidebar-dark-primary {
+    background-color: var(--background-color) !important; /* Cambiar el color de fondo */
+    color: var(--text-color) !important; /* Cambiar el color del texto */
+}
+
+
+/* Aplicar las variables */
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
 }

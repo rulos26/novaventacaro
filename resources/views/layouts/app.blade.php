@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard')</title>
-<!-- Cargar archivo app.css de manera estática -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Cargar archivo app.css de manera estática -->
+
     <!-- AdminLTE CSS desde CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- FontAwesome -->
@@ -71,8 +71,20 @@
         document.onkeydown = resetInactivityTimer;
         document.onscroll = resetInactivityTimer;
         document.onclick = resetInactivityTimer;
+        
     </script>
+    <script>
+        // Detectar el esquema de color del sistema
+    const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = userPrefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
 
+        // Cambiar el tema automáticamente si el usuario cambia su preferencia
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+            const newTheme = e.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", newTheme);
+        });
+    </script>
     <!-- Cargar archivo app.js de manera estática -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
